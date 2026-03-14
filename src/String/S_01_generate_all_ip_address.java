@@ -18,13 +18,10 @@ public class S_01_generate_all_ip_address {
     static ArrayList<String> generateIp(String s) {
         // code here
 
-
         ArrayList<String> list = new ArrayList<>();
         if(s.length()>12) return new ArrayList<>();
         String cur="";
         helper(s,0,0,cur,list);
-
-
 
         return list;
 
@@ -44,7 +41,6 @@ public class S_01_generate_all_ip_address {
                 helper(S, index + i, part + 1, cur + S.substring(index, index + i) + ".", list);
             }
         }
-
     }
     static boolean valid(String cur) {
         if (cur.charAt(0) == '0' && cur.length()>1) return false;
