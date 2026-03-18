@@ -20,43 +20,52 @@ public class Fancy_Sequence {
         System.out.println(idx);
         idx = obj.getIndex(2);
         System.out.println(idx);
-
-
     }
 
     static class Fancy {
         ArrayList<Long> list;
-        int MOD = (int) (Math.pow(10, 9) + 7);
+        long MOD = 1000000007;
+        long add = 0;
+        long mul = 1;
 
         public Fancy() {
             list = new ArrayList<>();
         }
 
         public void append(int val) {
-
-            list.add((long) val);
+            list.add(((val - add + MOD) % MOD) * modInverse(mul) % MOD);
         }
 
         public void addAll(int inc) {
-            for (int i = 0; i < list.size(); i++) {
-
-                list.set(i, (list.get(i) + inc) % MOD);
-            }
+            add = (add + inc) % MOD;
 
         }
 
         public void multAll(int m) {
-            for (int i = 0; i < list.size(); i++) {
-
-                list.set(i, (list.get(i) * m) % MOD);
-            }
+            add = (add * m) % MOD;
+            mul = (mul * m) % MOD;
 
         }
 
         public int getIndex(int idx) {
             if (idx >= list.size()) return -1;
-            return (int) (list.get(idx) % MOD);
 
+            return (int) ((list.get(idx) * mul % MOD + add) % MOD);
+
+        }
+          long modInverse(long x) {
+            return power(x, MOD - 2);
+        }
+
+         long power(long x, long y) {
+            long res = 1;
+            x %= MOD;
+            while (y > 0) {
+                if ((y & 1) == 1) res = (res * x) % MOD;
+                x = (x * x) % MOD;
+                y >>= 1;
+            }
+            return res;
         }
     }
 }
