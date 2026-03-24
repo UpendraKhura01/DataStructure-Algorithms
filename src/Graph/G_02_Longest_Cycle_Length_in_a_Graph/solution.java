@@ -7,7 +7,7 @@ import java.util.Map;
 public class solution {
     public static void main(String[] args) {
         int V = 7;
-        int[][] edges ={
+        int[][] edges = {
                 {0, 5},
                 {1, 0},
                 {2, 4},
@@ -16,9 +16,10 @@ public class solution {
                 {5, 6},
                 {6, 3}
         };
-        System.out.println("ans is:"+longestCycle(V, edges));
+        System.out.println("ans is:" + longestCycle(V, edges));
 
     }
+
     static int longestCycle(int V, int[][] edges) {
         // code here
         ArrayList<Integer> AdjL = new ArrayList<>();
@@ -26,14 +27,14 @@ public class solution {
 
         int[] vis = new int[V];
 
-        for(int i = 0; i < edges.length; i++){
-            int u = edges[i][0];
-            int v = edges[i][1];
-            AdjL.set(u,v);
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            AdjL.set(u, v);
         }
         int ans = -1;
-        for (int i=0; i<V; i++){
-            if((vis[i]) != 1){
+        for (int i = 0; i < V; i++) {
+            if ((vis[i]) != 1) {
 
                 ans = Math.max(helper(i, AdjL, vis, 0, new HashMap<>()), ans);
             }
@@ -41,9 +42,10 @@ public class solution {
         return ans;
 
     }
-    static int helper(int node, ArrayList<Integer> Adjl, int[] vis, int dist,Map<Integer, Integer> mp){
+
+    static int helper(int node, ArrayList<Integer> Adjl, int[] vis, int dist, Map<Integer, Integer> mp) {
         if (node == -1) return -1;
-        if (mp.containsKey(node)){
+        if (mp.containsKey(node)) {
             dist = dist - mp.get(node);
             return dist;
         }
@@ -52,7 +54,7 @@ public class solution {
         vis[node] = 1;
         mp.put(node, dist);
 
-        return helper(Adjl.get(node), Adjl, vis, dist+1, mp);
+        return helper(Adjl.get(node), Adjl, vis, dist + 1, mp);
 
     }
 }

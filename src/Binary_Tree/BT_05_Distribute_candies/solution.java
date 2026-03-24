@@ -1,4 +1,4 @@
-package Binary_Tree.Distribute_candies;
+package Binary_Tree.BT_05_Distribute_candies;
 
 class Node {
     int data;
