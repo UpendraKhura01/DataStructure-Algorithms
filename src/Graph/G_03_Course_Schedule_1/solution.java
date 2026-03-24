@@ -18,9 +18,9 @@ public class solution {
             AdjL.add(new ArrayList<>());
         }
 
-        for (int i = 0; i < prerequisites.length; i++) {
-            int u = prerequisites[i][0];
-            int v = prerequisites[i][1];
+        for (int[] prerequisite : prerequisites) {
+            int u = prerequisite[0];
+            int v = prerequisite[1];
             AdjL.get(v).add(u);
         }
         for (int i = 0; i < n; i++) {
@@ -40,7 +40,7 @@ public class solution {
 
         for (int it : Adjl.get(node)) {
             if (vis[it] == 0) {
-                    if (helper(it, vis, cur, Adjl) == true) return true;
+                    if (helper(it, vis, cur, Adjl)) return true;
 
             }
             //node has been visited and also in same path then it is a cycle
