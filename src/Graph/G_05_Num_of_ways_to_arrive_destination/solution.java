@@ -1,4 +1,4 @@
-package Graph.G_04_Num_of_ways_to_arrive_destination;
+package Graph.G_05_Num_of_ways_to_arrive_destination;
 
 import java.util.*;
 
