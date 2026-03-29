@@ -1,4 +1,4 @@
-package Graph.ArticulationPoint;
+package Graph.G_06_ArticulationPoint;
 
 import java.util.ArrayList;
 
