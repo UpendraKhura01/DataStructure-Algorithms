@@ -147,7 +147,7 @@ If f_time[u] <= l_time[v]
             isArt[node] = true;
         }
     }
-}
+
 ```
 
 ---
