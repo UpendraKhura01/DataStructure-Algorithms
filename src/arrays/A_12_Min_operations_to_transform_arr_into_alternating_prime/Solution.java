@@ -1,4 +1,4 @@
-package arrays.A_13_Min_operations_to_transform_arr_into_alternating_prime;
+package arrays.A_12_Min_operations_to_transform_arr_into_alternating_prime;
 
 public class Solution {
     public static void main(String[] args) {

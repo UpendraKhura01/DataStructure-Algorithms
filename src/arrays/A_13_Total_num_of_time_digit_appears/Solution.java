@@ -1,4 +1,4 @@
-package arrays.A_14_Total_num_of_time_digit_appears;
+package arrays.A_13_Total_num_of_time_digit_appears;
 
 public class Solution {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package arrays.MIn_dist_between_three_equal_elements_3740;
+package arrays.A_11_MIn_dist_between_three_equal_elements_3740;
 
 import java.util.ArrayList;
 import java.util.HashMap;
