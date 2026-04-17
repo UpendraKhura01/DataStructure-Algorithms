@@ -1,4 +1,4 @@
-package String.MIrror_letter_frerq;
+package String.S_02_MIrror_letter_frerq_3889;
 
 public class Solution {
     public static void main(String[] args) {
