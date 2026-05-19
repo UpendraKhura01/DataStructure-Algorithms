@@ -43,7 +43,7 @@ Because in:
 
 the largest number is always `n`.
 
-Once we know `n`, we can verify:
+Once we know `n`, we can verify the:
 
     1. Array size must be n + 1
     2. Numbers 1 to n-1 must appear exactly once
