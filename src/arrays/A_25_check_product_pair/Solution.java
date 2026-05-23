@@ -32,22 +32,21 @@ public class Solution {
 
     }
     static boolean isProduct(int[] arr, long target) {
-        HashSet<Long> set = new HashSet<>();
-
-        for (int x : arr) {
-            long num = x;
+        // code here
+        HashSet<Long> st = new HashSet<>();
+        for (int i : arr) {
 
             if (target == 0) {
-                if (num == 0 && set.size() > 0) return true;
-                if (num != 0 && set.contains(0L)) return true;
-            } else {
-                if (num != 0 && target % num == 0) {
-                    long need = target / num;
-                    if (set.contains(need)) return true;
-                }
+                if (i == 0 && !st.isEmpty()) return true;
+                if (i != 0 && st.contains(0L)) return true;
             }
 
-            set.add(num);
+            else if(i != 0 && target % i == 0) {
+                long x = (target / i);
+                if (st.contains(x))
+                    return true;
+            }
+            st.add((long)i);
         }
 
         return false;
