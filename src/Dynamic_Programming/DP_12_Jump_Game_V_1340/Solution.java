@@ -73,30 +73,25 @@ public class Solution {
         if(dp[idx] != -1) return dp[idx];
         for (int i = 1; i <= d; i++) {
             if (idx + i >= n) break;
-            if (!cango(idx, idx + i, arr)) break;
+            if(arr[idx + i] >= arr[idx]) break;
 
             cur = Math.max(cur, 1 + helper(idx + i, n, arr, d, dp));
         }
 
         for (int i = 1; i <= d; i++) {
             if (idx - i < 0) break;
-            if (!cango(idx, idx - i, arr)) break;
+            if (arr[idx - i] >= arr[idx]) break;
 
             cur = Math.max(cur, 1 + helper(idx - i, n, arr, d, dp));
         }
         return dp[idx] = cur;
     }
-    static boolean cango(int src, int target, int[] arr){
-        if(arr[src] <= arr[target])
-            return false;
-        for(int i = Math.min(src, target) + 1; i < Math.max(src,target); i++){
-            if(arr[i] >= arr[src]) return false;
-        }
-        return true;
-    }
+
     /***********************************************DP without Recursion***********************************************/
-//    static int Solve(int[] arr, int d){
-//
-//    }
+    static int Solve(int[] arr, int d){
+        int ans = 1;
+
+        return ans;
+    }
 
 }
