@@ -1,4 +1,4 @@
-package HashMap.H_01_Min_Absolute_diff_Between_Mirror_Pairs_3761;
+package HashMap.HM_01_Min_Absolute_diff_Between_Mirror_Pairs_3761;
 
 import java.util.HashMap;
 import java.util.Map;
