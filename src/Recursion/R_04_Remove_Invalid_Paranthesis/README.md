@@ -1,5 +1,11 @@
 # 🧹 Remove Invalid Parentheses
 
+> Difficulty: Hard
+>
+> Topics: Recursion, Backtracking, Strings
+
+---
+
 ## 📌 Problem Statement
 
 Given a string `s` consisting of lowercase letters and parentheses:
@@ -8,7 +14,7 @@ Given a string `s` consisting of lowercase letters and parentheses:
 '(' and ')'
 ```
 
-A string is valid if:
+A string is considered valid if:
 
 ```text
 1. Every '(' has a matching ')'
@@ -16,7 +22,7 @@ A string is valid if:
 3. Letters do not affect validity
 ```
 
-Remove the **minimum number of invalid parentheses** and return all distinct valid strings in sorted order.
+Remove the **minimum number of invalid parentheses** and return all distinct valid strings in lexicographically sorted order.
 
 ---
 
@@ -28,30 +34,29 @@ Generate all valid strings such that:
 ✓ Minimum removals are performed
 ✓ Parentheses remain valid
 ✓ No duplicate answers
-✓ Output is lexicographically sorted
+✓ Output is sorted
 ```
 
 ---
 
 ## 💡 Intuition
 
-Instead of blindly removing brackets:
+Instead of randomly removing brackets:
 
 ```text
 Remove
-Try
-Check validity
+Check
 Repeat
 ```
 
-we first calculate:
+we first determine:
 
 ```text
 How many extra '(' exist?
 How many extra ')' exist?
 ```
 
-Then recursion only removes those brackets.
+Then recursion removes exactly those brackets.
 
 This guarantees:
 
@@ -68,8 +73,6 @@ The solution works in two phases.
 ### Phase 1 : Count Invalid Parentheses
 
 Traverse the string.
-
-For every character:
 
 ```text
 If '(':
@@ -95,50 +98,29 @@ have_close = extra ')' to remove
 
 ---
 
-### Example
+### Phase 2 : Backtracking
 
-Input:
+At every character:
 
 ```text
-()())(
+Keep it
+OR
+Remove it
 ```
 
-Traversal:
+Rules:
 
 ```text
-(
-open = 1
+For '(':
+    Remove if have_open > 0
+    Keep and preserve++
 
-)
-open = 0
+For ')':
+    Remove if have_close > 0
+    Keep only if preserve > 0
 
-(
-open = 1
-
-)
-open = 0
-
-)
-extra close = 1
-
-(
-open = 1
-```
-
-Final:
-
-```text
-have_open  = 1
-have_close = 1
-```
-
-Meaning:
-
-```text
-Remove exactly:
-
-1 '('
-1 ')'
+For letters:
+    Always keep
 ```
 
 ---
@@ -151,7 +133,7 @@ Remove exactly:
 int idx
 ```
 
-Current position in the string.
+Current index being processed.
 
 ---
 
@@ -164,7 +146,7 @@ int have_open
 Represents:
 
 ```text
-How many extra '(' still need removal
+Extra '(' still left to remove
 ```
 
 ---
@@ -178,7 +160,7 @@ int have_close
 Represents:
 
 ```text
-How many extra ')' still need removal
+Extra ')' still left to remove
 ```
 
 ---
@@ -213,7 +195,7 @@ Current string:
 Unmatched '(' = 3
 ```
 
-So:
+Therefore:
 
 ```java
 preserve = 3;
@@ -227,13 +209,7 @@ preserve = 3;
 StringBuilder cur
 ```
 
-Current answer being built.
-
-Example:
-
-```text
-()(
-```
+Current string being built.
 
 ---
 
@@ -252,182 +228,166 @@ Stores:
 
 ---
 
-## 🔄 Recursion Decisions
-
-At every character:
-
-```text
-Keep it
-OR
-Remove it
-```
-
----
-
-### Case 1 : '('
-
-#### Remove
-
-Only if:
+# 💻 Code
 
 ```java
-have_open > 0
-```
+class Solution {
 
-```text
-Use one removal
-```
+    public List<String> validParenthesis(String s) {
 
----
+        int n = s.length();
 
-#### Keep
+        int have_open = 0;
+        int have_close = 0;
 
-```java
-cur.append('(');
-```
+        // Calculate the minimum number of invalid '(' and ')'
+        // that must be removed
+        for(int i = 0; i < n; i++){
+            char ch = s.charAt(i);
 
-Update:
+            if(ch == '(')
+                have_open++;
 
-```java
-preserve + 1
-```
+            else if(ch == ')')
+                if(have_open > 0)
+                    have_open--;
+                else
+                    have_close++;
+        }
 
-Because this bracket needs matching later.
+        Set<String> ans = new TreeSet<>();
 
----
+        helper(
+                0,
+                have_open,
+                0,
+                have_close,
+                new StringBuilder(),
+                ans,
+                s,
+                n
+        );
 
-### Case 2 : ')'
+        return new ArrayList<>(ans);
+    }
 
-#### Remove
+    private void helper(
+            int idx,
+            int have_open,
+            int preserve,
+            int have_close,
+            StringBuilder cur,
+            Set<String> ans,
+            String s,
+            int n
+    ){
 
-Only if:
+        if(idx == n){
 
-```java
-have_close > 0
-```
+            // Valid expression formed
+            if(have_open == 0 &&
+               have_close == 0 &&
+               preserve == 0){
 
----
+                ans.add(cur.toString());
+            }
 
-#### Keep
+            return;
+        }
 
-Only if:
+        char ch = s.charAt(idx);
 
-```java
-preserve > 0
-```
+        if(ch == '('){
 
-Why?
+            if(have_open > 0){
 
-Because:
+                // remove this '('
+                helper(
+                        idx + 1,
+                        have_open - 1,
+                        preserve,
+                        have_close,
+                        cur,
+                        ans,
+                        s,
+                        n
+                );
+            }
 
-```text
-)(
-```
+            // keep this '('
+            cur.append(ch);
 
-is invalid.
+            helper(
+                    idx + 1,
+                    have_open,
+                    preserve + 1,
+                    have_close,
+                    cur,
+                    ans,
+                    s,
+                    n
+            );
 
-A closing bracket must have an unmatched opening bracket available.
+            cur.deleteCharAt(cur.length() - 1);
+        }
 
-When kept:
+        else if(ch == ')'){
 
-```java
-preserve - 1
-```
+            if(have_close > 0){
 
-because one open bracket gets matched.
+                // remove this ')'
+                helper(
+                        idx + 1,
+                        have_open,
+                        preserve,
+                        have_close - 1,
+                        cur,
+                        ans,
+                        s,
+                        n
+                );
+            }
 
----
+            // keep ')' only if an unmatched '(' exists
+            if(preserve > 0){
 
-### Case 3 : Normal Character
+                cur.append(ch);
 
-Example:
+                helper(
+                        idx + 1,
+                        have_open,
+                        preserve - 1,
+                        have_close,
+                        cur,
+                        ans,
+                        s,
+                        n
+                );
 
-```text
-a
-b
-c
-x
-```
+                cur.deleteCharAt(cur.length() - 1);
+            }
+        }
 
-Always keep.
+        else{
 
-```java
-cur.append(ch);
-```
+            // letters are always preserved
+            cur.append(ch);
 
-No effect on bracket counts.
+            helper(
+                    idx + 1,
+                    have_open,
+                    preserve,
+                    have_close,
+                    cur,
+                    ans,
+                    s,
+                    n
+            );
 
----
-
-## 🏁 Base Case
-
-When:
-
-```java
-idx == n
-```
-
-Entire string has been processed.
-
-Accept answer only if:
-
-```java
-have_open == 0
-have_close == 0
-preserve == 0
-```
-
-Meaning:
-
-```text
-✓ No removals left
-✓ No unmatched '(' left
-✓ Expression is valid
-```
-
-Then:
-
-```java
-ans.add(cur.toString());
-```
-
----
-
-## 🔙 Why Backtracking?
-
-Whenever we do:
-
-```java
-cur.append(ch);
-```
-
-we must undo it:
-
-```java
-cur.deleteCharAt(cur.length() - 1);
-```
-
-Otherwise:
-
-```text
-One recursive branch
-will affect another branch
-```
-
-This is called:
-
-```text
-Backtracking
-```
-
-Pattern:
-
-```text
-Choose
-↓
-Recurse
-↓
-Undo
+            cur.deleteCharAt(cur.length() - 1);
+        }
+    }
+}
 ```
 
 ---
@@ -440,24 +400,67 @@ Input:
 ()())()
 ```
 
-Invalid counts:
+---
+
+### Step 1 : Count Invalid Parentheses
+
+Traversal:
+
+```text
+(
+open = 1
+
+)
+open = 0
+
+(
+open = 1
+
+)
+open = 0
+
+)
+extra close = 1
+
+(
+open = 1
+
+)
+open = 0
+```
+
+Final:
 
 ```text
 have_open  = 0
 have_close = 1
 ```
 
-Start:
+Meaning:
 
 ```text
-helper(
-    idx = 0,
-    preserve = 0,
-    cur = ""
-)
+Remove exactly one ')'
 ```
 
-Eventually recursion explores:
+---
+
+### Step 2 : Start Recursion
+
+Initial state:
+
+```text
+idx        = 0
+have_open  = 0
+have_close = 1
+preserve   = 0
+cur        = ""
+```
+
+---
+
+### Step 3 : Explore Choices
+
+Eventually recursion discovers:
 
 ```text
 Remove ')' at index 1
@@ -467,14 +470,11 @@ Remove ')' at index 4
 → ()()()
 ```
 
-Valid answers:
+Both are valid.
 
-```text
-(())()
-()()()
-```
+---
 
-Output:
+### Final Output
 
 ```text
 ["(())()", "()()()"]
@@ -528,11 +528,9 @@ Valid?
 O(2^n)
 ```
 
-Reason:
-
-```text
 Each bracket can be:
 
+```text
 Keep
 or
 Remove
