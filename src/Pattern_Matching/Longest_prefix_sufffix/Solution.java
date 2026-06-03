@@ -1,7 +1,7 @@
 package Pattern_Matching.Longest_prefix_sufffix;
 /*
         Longest Prefix Suffix
-        Difficulty: HardAccuracy: 27.91%Submissions: 169K+Points: 8
+        Difficulty: Hard
         Given a string s, of lowercase english alphabets, find the length of the longest proper prefix which is also a suffix.
         Note: Prefix and suffix can be overlapping but they should not be equal to the entire string.
 
@@ -24,7 +24,7 @@ package Pattern_Matching.Longest_prefix_sufffix;
         s contains only lowercase English alphabets.
 */
 
-public class Longest_Prefix_Suffix {
+public class Solution {
     public static void main(String[] args) {
 
     }
