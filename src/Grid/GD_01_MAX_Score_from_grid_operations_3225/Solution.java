@@ -1,4 +1,4 @@
-package Grid.GD_MAX_Score_from_grid_operations_3225;
+package Grid.GD_01_MAX_Score_from_grid_operations_3225;
 
 public class Solution {
     public static void main(String[] args) {
