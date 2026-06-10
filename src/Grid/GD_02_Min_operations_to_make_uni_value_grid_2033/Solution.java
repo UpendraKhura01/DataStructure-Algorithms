@@ -1,4 +1,4 @@
-package Grid.GD_Min_operations_to_make_uni_value_grid_2033;
+package Grid.GD_02_Min_operations_to_make_uni_value_grid_2033;
 
 import java.util.Arrays;
 
