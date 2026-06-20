@@ -1,4 +1,4 @@
-package Range_Query.Range_Minimum_Query;
+package Range_Query.RQ_01_Range_Minimum_Query;
 /*
         Range Minimum Query
         Difficulty: Medium
