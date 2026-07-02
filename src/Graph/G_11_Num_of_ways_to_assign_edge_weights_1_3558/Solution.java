@@ -1,4 +1,4 @@
-package Graph.Num_of_ways_to_assign_edge_weights_1_3558;
+package Graph.G_11_Num_of_ways_to_assign_edge_weights_1_3558;
 
 import java.util.ArrayList;
 /*
