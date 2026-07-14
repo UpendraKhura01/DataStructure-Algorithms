@@ -1,4 +1,4 @@
-package Simulation.Slim_04_Earliest_finish_time_for_land_water_ride_2_3635;
+package Simulation.Sim_04_Earliest_finish_time_for_land_water_ride_2_3635;
 /*
         3635. Earliest Finish Time for Land and Water Rides II
         Medium
