@@ -1,4 +1,4 @@
-package Binary_Tree.Check_pre_order_of_BST;
+package Binary_Tree.BT_11_Check_pre_order_of_BST;
 
 import java.util.List;
 import java.util.Stack;
