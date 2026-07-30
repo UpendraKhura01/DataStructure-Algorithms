@@ -30,7 +30,7 @@ public class Solution {
 
         return helper(0, 0, 0, grid, prefix, dp, n);
     }
-
+/************************************************************************************************************************/
     //Memoization with DP
     static long helper(int prevused, int prevheight, int col, int[][] grid, long[][] prefix,long[][][] dp, int n){
         if(col == n){
@@ -58,7 +58,7 @@ public class Solution {
         }
         return dp[prevheight][col][prevused] = ans;
     }
-
+/****************************************************************************************************************************/
     //TABULATION
     static long maximumScore2(int[][] grid) {
         int n = grid.length;
