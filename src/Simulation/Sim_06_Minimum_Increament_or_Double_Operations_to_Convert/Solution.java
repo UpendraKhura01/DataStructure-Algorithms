@@ -1,0 +1,66 @@
+package Simulation.Sim_06_Minimum_Increament_or_Double_Operations_to_Convert;
+
+/*
+        Minimum Increment or Double Operations to Convert
+
+        Difficulty: Medium
+        Given an array arr[]. Initially, you have another array containing only 0s.
+        In one operation, you may either:
+
+        Choose any one element and increase its value by 1, or
+        Double the values of all elements in the array simultaneously.
+        Find the minimum number of operations required to transform the initial all-zero array into the given array arr[].
+
+        Examples:
+
+        Input: arr[] = [16, 16, 16]
+        Output: 7
+        Explanation:
+        First, increase each element to make the array [1, 1, 1] (3 steps).
+        Then, multiply the whole array by 2 four times:
+        [1,1,1] -> [2,2,2] -> [4,4,4] -> [8,8,8] -> [16,16,16]
+        Total steps = 3 + 4 = 7.
+        Input: arr[] = [2, 3]
+        Output: 4
+        Explanation:
+        Start from [0, 0].
+        Increase both elements to get [1, 1] (2 steps)
+        Multiply once: [2, 2] (1 step)
+        Increase second element once: [2, 3] (1 step)
+        Total steps = 2 + 1 + 1 = 4.
+        Constraints:
+        1 ≤ arr.size() ≤ 10^5
+        0 ≤ arr[i] ≤ 10^9
+ */
+public class Solution {
+    public static void main(String[] args) {
+
+    }
+    int countMinOperations(int arr[]) {
+        // code here
+        int ans = 0;
+
+        while (true) {
+            boolean allZero = true;
+
+            // Remove odd numbers
+            for (int i = 0; i < arr.length; i++) {
+
+                if ((arr[i] & 1) == 1) {
+                    arr[i]--;
+                    ans++;
+                }
+                if (arr[i] != 0)
+                    allZero = false;
+            }
+
+            if (allZero)
+                return ans;
+
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] /= 2;
+            }
+            ans++;
+        }
+    }
+}
