@@ -3,8 +3,8 @@ package ncr;
 public class Solution {
     long M = 1000000007;
     long ncr(int n, int r){
-        long[] fact = new long[2 * n + 1];
-        long[] inv = new long[2 * n + 1];
+        long[] fact = new long[2 * n + 1];//factorial
+        long[] inv = new long[2 * n + 1];//inverse of the factorial
 
         fact[0] = 1;
         for(int i = 1; i<= 2 * n; i++){
