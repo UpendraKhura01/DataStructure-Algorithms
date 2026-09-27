@@ -65,7 +65,7 @@ public class Solution {
             }
             return dp[n];
         }
-/************************************************Optimal Greedy Solution************************************************/
+/************************************************Optimal Greedy String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution************************************************/
         int Greedy(int n) {
             // code here
             if(n == 2) return 1;
