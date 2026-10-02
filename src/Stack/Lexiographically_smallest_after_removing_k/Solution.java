@@ -2,7 +2,7 @@ package Stack.Lexiographically_smallest_after_removing_k;
 
 /*
         Lexicographically smallest after removing k
-        Difficulty: MediumAccuracy: 49.97%Submissions: 28K+Points: 4
+        Difficulty: Medium
         Given a string s consisting of n lowercase characters. Return the lexicographically smallest string,
         after removing exactly k characters from the string. But you have to correct the value of k, i.e.,
          if the length of the string is a power of 2, reduce k by half, else multiply k by 2. You can remove any k characters.
@@ -21,8 +21,8 @@ package Stack.Lexiographically_smallest_after_removing_k;
         Explanation: As the length of the string = 4, which is 2 to the power 2, hence k = 2. Hence,
         lexicographically smallest string after removal of 2 characters is "cd".
         Constraints:
-        1 ≤ n ≤ 105
-        1 ≤ k ≤ 105
+        1 ≤ n ≤ 10^5
+        1 ≤ k ≤ 10^5
  */
 public class Solution {
     public static void main(String[] args) {
