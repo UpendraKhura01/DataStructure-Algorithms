@@ -368,10 +368,10 @@ O(1)
 
 ---
 
-# Java Solution
+# Java String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution
 
 ```java
-class Solution {
+class String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution {
 
     int getCount(int n) {
 
