@@ -30,6 +30,5 @@ public class Solution {
             ans += Math.abs(freqN[i] - freqN[9 - i]);
         }
         return ans;
-
     }
 }
