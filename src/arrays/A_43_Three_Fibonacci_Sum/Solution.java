@@ -2,9 +2,9 @@ package arrays.A_43_Three_Fibonacci_Sum;
 
 /*
         Q1. Three Fibonacci Sum
-        Solved
+
         Easy
-        3 pt.
+        .
         You are given an integer n.
 
         The Fibonacci sequence starts with 0 and 1, and each subsequent number is the sum of the previous two numbers.
