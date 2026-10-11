@@ -1,4 +1,4 @@
-package arrays.A_42_Three_Fibonacci_Sum;
+package arrays.A_43_Three_Fibonacci_Sum;
 
 /*
         Q1. Three Fibonacci Sum
