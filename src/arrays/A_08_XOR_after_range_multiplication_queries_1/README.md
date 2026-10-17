@@ -83,7 +83,7 @@ nums[i] = (nums[i] * v) % MOD
 ```java
 package arrays.A_08_XOR_after_range_multiplication_queries_1;
 
-public class Solution {
+public class String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution {
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 5, 4};
         int[][] queries = {
