@@ -245,12 +245,12 @@ for the `inc` and `dec` arrays.
 
 ---
 
-# Java Solution
+# Java String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution
 
 ```java
 import java.util.ArrayList;
 
-class Solution {
+class String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution {
 
     ArrayList<Boolean> processQueries(int[] arr, int[][] queries) {
 

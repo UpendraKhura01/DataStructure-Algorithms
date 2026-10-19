@@ -1,4 +1,4 @@
-package Bit_magic.BM_04_MInimum_Deletions_To_Make_Array_Sharp_4083;
+package Bit_magic.BM_05_MInimum_Deletions_To_Make_Array_Sharp_4083;
 
 /*
         4083. Minimum Deletions to Make Array Sharp
