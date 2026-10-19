@@ -56,7 +56,7 @@ Given a binary tree, return an `ArrayList` of integers representing the **top vi
 ## Java Code
 
 ```java
-class Solution {
+class String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution {
     static ArrayList<Integer> topView(Node root) {
         // code here
         Queue<pair> q=new LinkedList<>();
