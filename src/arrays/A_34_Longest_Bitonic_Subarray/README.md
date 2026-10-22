@@ -208,10 +208,10 @@ Since every index is checked once, the global maximum is found.
 
 ---
 
-# Java Solution
+# Java String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution
 
 ```java
-class Solution {
+class String.S_16_Max_Digit_Sum_Number_in_1_to_N.Solution {
     int bitonic(int[] arr) {
         int n = arr.length;
 
